@@ -98,7 +98,7 @@ def scrape():
     # html_table
 
     # Close the browser after scraping
-    browser.quit()
+    # browser.quit()
 
     #******************************************************
     #******** Mars Hemispheres Scrape -*******************
@@ -157,7 +157,10 @@ def scrape():
 
     mars_data = {
         "news_title": news_title,
-        "news_teaser_title" : news_teaser_title 
+        "news_teaser_title" : news_teaser_title,
+        "Featured_Mars_Image": featured_image_url,
+        "Mars_Facts" : html_table,
+        "Mars_Hemispheres" : hemisphere_image_urls
     }
 
     # Close the browser after scraping

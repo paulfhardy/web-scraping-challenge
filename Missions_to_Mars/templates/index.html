@@ -20,6 +20,13 @@
     <h2><strong>Latest Mars News</strong></h2>
     <h3><strong>{{ scraped_data.news_title }}</strong></h3>
     <h4>{{ scraped_data.news_teaser_title }}</h4>
+    <h2><strong>Featured Mars Image</strong></h2>
+    <img src="{{ scraped_data.Featured_Mars_Image }}" alt="Featured image of Mars from jpl.nasa.gov" width="800" height="600">
+
+    <h1>Mars Facts</h1>
+
+    {{ scraped_data.Mars_Facts|safe }}
+
     {% endif %}
   </div>
   </div>
