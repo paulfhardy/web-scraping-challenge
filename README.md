@@ -15,10 +15,10 @@
 
 1. The flask app is run by executing "python app.py", this program contains both a root route and a route to refresh (scrape) new data.  It requires the chromedriver.exe for windows and an available MongoDb instance for writing and fetching data.
 
-2. After scrape_mars.py completes a request to "refresh it's data, it saves the dat to a collection in MongoDb: A screen shot of the scraped data in MongoDb appears ![here](Missions_to_Mars/ScreenShots/MongoDbCompassScreenCapture.png)
-
+2. After scrape_mars.py completes a request to "refresh it's data, it saves the dat to a collection in MongoDb: A screen shot of the scraped data in MongoDb appears 
+![Screenshot](/missions_to_mars/screenshots/mongodbcompassscreencapture.png)
 3. Screen Shots of the fully loaded application appear below:
 
-![here](Missions_to_Mars/ScreenShots/ScreenCapture1.png)
-![here](Missions_to_Mars/ScreenShots/ScreenCapture2.png)
-![here](Missions_to_Mars/ScreenShots/ScreenCapture3.png)
+![Screenshot](/Missions_to_Mars/ScreenShots/ScreenCapture1.png)
+![Screenshot](/Missions_to_Mars/ScreenShots/ScreenCapture2.png)
+![Screenshot](/Missions_to_Mars/ScreenShots/ScreenCapture3.png)
