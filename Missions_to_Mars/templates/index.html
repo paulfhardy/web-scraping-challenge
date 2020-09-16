@@ -11,23 +11,78 @@
 
 <body>
   <div class="container-fluid">
+    
     <div class="jumbotron text-center">
       <h1>Mission to the Red Planet</h1>
       <p></p>
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Refresh Data</a></p>
     </div>
-    {% if scraped_data %}
-    <h2><strong>Latest Mars News</strong></h2>
-    <h3><strong>{{ scraped_data.news_title }}</strong></h3>
-    <h4>{{ scraped_data.news_teaser_title }}</h4>
-    <h2><strong>Featured Mars Image</strong></h2>
-    <img src="{{ scraped_data.Featured_Mars_Image }}" alt="Featured image of Mars from jpl.nasa.gov" width="800" height="600">
 
-    <h1>Mars Facts</h1>
+  <!-- First Row -->
+  <div class="row">
+    <!-- First (and only column) -->
+    <div class="col-md-12">
+      {% if scraped_data %}
+      <h2><strong>Latest Mars News</strong></h2>
+      <h3><strong>{{ scraped_data.news_title }}</strong></h3>
+      <h4>{{ scraped_data.news_teaser_title }}</h4>
+    </div>
+  </div>
+  
+  <!-- Second Row -->
+  <div class="row">
+    
+    <!-- First of two columns -->
+    <div class="col-md-8">
+      <h2><strong>Featured Space Image</strong></h2>
+      <img src="{{ scraped_data.Featured_Mars_Image }}" alt="Featured image of Mars from jpl.nasa.gov" class=img-fluid, width = 100%, height:auto">
+    </div>
 
-    {{ scraped_data.Mars_Facts|safe }}
+    <!-- Second of two columns -->
+    <div class="col-md-4" >  
+      <h1>Mars Facts</h1>
+      {{ scraped_data.Mars_Facts|safe }} 
+    </div>
+  </div>
 
-    {% endif %}
+  <!-- Third Row -->
+  <div class="row">
+    <!-- First (and only column) -->
+    <div class="col-md-10 text-center">
+      <h2><strong>Mars Hemispheres</strong></h2>
+    </div>
+  </div>
+
+  <!-- Fourth Row -->
+  <div class="row">
+      <div class="col-md-5">
+        <img src="{{ scraped_data.Mars_Hemispheres[0].img_url }}" alt="Mars Hemisphere" class=img-fluid, width = 100%, height:auto>
+        <h3><strong>{{ scraped_data.Mars_Hemispheres[0].title }}</strong></h3> 
+      </div>
+
+      <div class="col-md-5">
+        <img src="{{ scraped_data.Mars_Hemispheres[1].img_url }}" alt="Mars Hemisphere" class=img-fluid, width = 100%, height:auto>
+        <h3><strong>{{ scraped_data.Mars_Hemispheres[1].title }}</strong></h3> 
+      </div>
+  </div>
+
+  <!-- Fifth Row -->
+  <div class="row">
+    <div class="col-md-5">
+      <img src="{{ scraped_data.Mars_Hemispheres[2].img_url }}" alt="Mars Hemisphere" class=img-fluid, width = 100%, height:auto>
+      <h3><strong>{{ scraped_data.Mars_Hemispheres[2].title }}</strong></h3> 
+    </div>
+
+    <div class="col-md-5">
+      <img src="{{ scraped_data.Mars_Hemispheres[3].img_url }}" alt="Mars Hemisphere" class=img-fluid, width = 100%, height:auto>
+      <h3><strong>{{ scraped_data.Mars_Hemispheres[3].title }}</strong></h3> 
+    </div>
+</div>
+
+
+
+
+  {% endif %}
   </div>
   </div>
 </body>

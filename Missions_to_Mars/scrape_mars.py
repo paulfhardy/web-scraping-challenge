@@ -103,7 +103,6 @@ def scrape():
     #******************************************************
     #******** Mars Hemispheres Scrape -*******************
     #******************************************************
-
     import time
     executable_path = {'executable_path': 'chromedriver.exe'}
     browser = Browser('chrome', **executable_path, headless=False)
@@ -117,7 +116,6 @@ def scrape():
     # Parse HTML with Beautiful Soup
     soup = BeautifulSoup(html, 'html.parser')
     #print(soup.prettify())
-
     hemisphere_url= []
     # Build list of Hemisphere names, searching for h3s
     h3s = soup.find_all('h3')
@@ -125,30 +123,39 @@ def scrape():
     # Loop over td elements
     for h3 in h3s:
         hemispheres.append(h3.text)
-    #hemispheres
 
     # Loop through each of the hemispheres and find the associated link
     # on a separate page to the link to the full resolution image 
     for hemi in hemispheres:
-        
+
         # After identifying the "full image" button on the page - click it to navigate to the next page.
-        #browser.links.find_by_partial_text('Cerberus').click()
+        # browser.links.find_by_partial_text('Cerberus').click()
         browser.links.find_by_partial_text(hemi).click()
         html = browser.html
         # Parse HTML with Beautiful Soup
         soup = BeautifulSoup(html, 'html.parser')
-        # print(soup.prettify())
-        # Search for ul tag and then li tags that contain the links to the full images
-        results = soup.find('ul')
-        full_images = results.find_all('li')
-        # In the results, find full_images by searching for the <a> tag and href, then append to hemisphere_url list.
-        for image_link in full_images:
-            href_full = image_link.find('a')
-            if "Original" in href_full: 
-                image_url = image_link.find('a')['href']
-                hemisphere_url.append(image_url)
+        #print(soup.prettify())
+
+        browser.links.find_by_partial_text('Open').click()
+        html = browser.html
+
+        # Parse HTML with Beautiful Soup
+        soup = BeautifulSoup(html, 'html.parser')
+        #print(soup.prettify()
+
+        # The section of the HTML that contains the href to the full jpg image
+        results = soup.find('img', class_="wide-image")
+        #results
+        # Grab href element of full jpeg image
+        sublink = results['src']
+
+        image_url = "https://astrogeology.usgs.gov" + sublink
+
+        hemisphere_url.append(image_url)
+        
         browser.back()
-        time.sleep(1)
+        time.sleep(1)    
+
 
     # Now make a list of dictionaries of the two lists containing the hemisphere names
     # and associated high resolution image links.
